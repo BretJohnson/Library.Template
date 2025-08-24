@@ -10,7 +10,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AnalysisLevel>latest</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- <GenerateDocumentationFile>true</GenerateDocumentationFile> -->
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
 
     <!-- https://github.com/dotnet/msbuild/blob/main/documentation/ProjectReference-Protocol.md#setplatform-negotiation -->
@@ -25,13 +25,10 @@
     <!-- Local builds should embed PDBs so we never lose them when a subsequent build occurs. -->
     <DebugType Condition=" '$(CI)' != 'true' and '$(TF_BUILD)' != 'true' ">embedded</DebugType>
 
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)strongname.snk</AssemblyOriginatorKeyFile>
-
     <!-- <PackageProjectUrl>https://github.com/ORG/REPO</PackageProjectUrl> -->
     <Company>COMPANY-PLACEHOLDER</Company>
-    <Authors>COMPANY-PLACEHOLDER</Authors>
-    <Copyright>© COMPANY-PLACEHOLDER. All rights reserved.</Copyright>
+    <Authors>Bret Johnson</Authors>
+    <Copyright>© Bret Johnson. All rights reserved.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -43,10 +40,6 @@
     <LangVersion Condition="'$(MSBuildProjectExtension)'=='.csproj'">13</LangVersion>
     <LangVersion Condition="'$(MSBuildProjectExtension)'=='.vbproj'">16.9</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />
-  </ItemGroup>
 
   <ItemDefinitionGroup>
     <!-- We always want MSBuild properties generated that point at the restored location of each package. -->

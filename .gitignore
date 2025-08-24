@@ -10,7 +10,6 @@
 *.userosscache
 *.sln.docstates
 *.lutconfig
-launchSettings.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -59,9 +58,6 @@ dlldata.c
 
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
-
-# StyleCop
-StyleCopReport.xml
 
 # Files built by Visual Studio
 *_i.c
@@ -358,3 +354,6 @@ MigrationBackup/
 
 # Analysis results
 *.sarif
+
+# Claude
+.claude/settings.local.json
