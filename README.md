@@ -1,5 +1,7 @@
 # Your Library
 
+This is forked from https://github.com/AArnott/Library.Template, with updates to use the conventions I follow for my repos.
+
 ***An awesome template for your awesome library***
 
 ![NuGet package](https://img.shields.io/badge/nuget-your--package--here-yellow.svg)
@@ -57,7 +59,7 @@ If you do not already have Library.Template history in your repo or have never c
 To get it working the first time, follow these steps:
 
 ```ps1
-git remote add libtemplate https://github.com/AArnott/Library.Template.git
+git remote add libtemplate https://github.com/BretJohnson/Library.Template.git
 git fetch libtemplate
 ```
 
@@ -65,7 +67,7 @@ If the `git merge` step described earlier still fails for you, you may need to a
 First, you must have a local clone of Library.Template on your box:
 
 ```ps1
-git clone https://github.com/AArnott/Library.Template.git
+git clone https://github.com/BretJohnson/Library.Template.git
 ```
 
 Make sure you have either `main` checked out in that clone, as appropriate to match.
