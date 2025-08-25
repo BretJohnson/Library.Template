@@ -164,28 +164,8 @@ try {
         'Library'=$LibraryName
     }
 
-    # Specially handle azure-pipelines .yml edits
-    Replace-Placeholders -Path "azure-pipelines/build.yml" -Replacements @{
-        "(?m).*expand-template\.yml(?:\r)?\n" = ""
-    }
-
-    $YmlReplacements = @{}
-    if ($CodeCovToken) {
-        $YmlReplacements['(codecov_token: ).*(#.*)'] = "`$1$CodeCovToken"
-    } else {
-        $YmlReplacements['(codecov_token: ).*(#.*)'] = "#`$1`$2"
-    }
-    if ($CIFeed) {
-        $YmlReplacements['(ci_feed: ).*(#.*)'] = "`$1$CIFeed"
-    } else {
-        $YmlReplacements['(ci_feed: ).*(#.*)'] = "#`$1`$2"
-    }
-    Replace-Placeholders -Path "azure-pipelines.yml" -Replacements $YmlReplacements
-
     # Self destruct
     git rm Expand-Template.* Apply-Template.ps1
-    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-    git rm :/azure-pipelines/expand-template.yml
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
     # Self-integrity check
@@ -214,4 +194,4 @@ try {
 }
 
 # When testing this script, all the changes can be quickly reverted with this command:
-# git reset HEAD :/README.md :/LICENSE :/azure-pipelines.yml :/src :/test :/azure-pipelines; git co -- :/README.md :/LICENSE :/azure-pipelines.yml :/src :/azure-pipelines; git clean -fd :/src :/test
+# git reset HEAD :/README.md :/LICENSE :/src :/test; git co -- :/README.md :/LICENSE :/src; git clean -fd :/src :/test
