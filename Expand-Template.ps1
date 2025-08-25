@@ -53,22 +53,6 @@ function Replace-Placeholders {
     git add $Path
 }
 
-# Try to find sn.exe if it isn't on the PATH
-$sn = Get-Command sn -ErrorAction SilentlyContinue
-if (-not $sn) {
-    if ($IsMacOS -or $IsLinux) {
-        Write-Error "sn command not found on PATH. Install mono and/or vote up this issue: https://github.com/dotnet/sdk/issues/13560"
-        exit(1)
-    }
-    $snExes = Get-ChildItem -Recurse "${env:ProgramFiles(x86)}\Microsoft SDKs\Windows\sn.exe"
-    if ($snExes) {
-        $sn = Get-Command $snExes[0].FullName
-    } else {
-        Write-Error "sn command not found on PATH and SDK could not be found."
-        exit(1)
-    }
-}
-
 if (-not (& "$PSScriptRoot\tools\Check-DotNetSdk.ps1")) {
     if ($PSCmdlet.ShouldProcess('Install .NET Core SDK?')) {
         & "$PSScriptRoot\tools\Install-DotNetSdk.ps1"
