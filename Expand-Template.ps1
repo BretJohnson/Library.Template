@@ -130,12 +130,6 @@ try {
     git add "test/$LibraryName.Tests/$LibraryName.Tests.csproj"
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-    # Establish a new strong-name key
-    & $sn.Path -k 2048 strongname.snk
-    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-    git add strongname.snk
-    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-
     # Replace placeholders in source files
     Replace-Placeholders -Path "src/$LibraryName/Calculator.cs" -Replacements @{
         'Library'=$LibraryName
@@ -152,9 +146,6 @@ try {
         'COMPANY-PLACEHOLDER'=$Author
     }
     Replace-Placeholders -Path "LICENSE" -Replacements @{
-        'COMPANY-PLACEHOLDER'=$Author
-    }
-    Replace-Placeholders -Path "stylecop.json" -Replacements @{
         'COMPANY-PLACEHOLDER'=$Author
     }
     Replace-Placeholders -Path "Directory.Build.props" -Replacements @{
