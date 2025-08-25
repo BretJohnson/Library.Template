@@ -194,4 +194,4 @@ try {
 }
 
 # When testing this script, all the changes can be quickly reverted with this command:
-# git reset HEAD :/README.md :/LICENSE :/src :/test; git co -- :/README.md :/LICENSE :/src; git clean -fd :/src :/test
+# git reset HEAD :/README.md :/LICENSE :/src :/test; git checkout -- :/README.md :/LICENSE :/src; git clean -fd :/src :/test
